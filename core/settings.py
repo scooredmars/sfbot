@@ -25,6 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'sfbot',
     'compressor',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +147,32 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': 300,
     },
 }
+
+# Allauth custom settings
+
+LOGIN_REDIRECT_URL = "../dashboard"
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+ACCOUNT_USERNAME_MIN_LENGTH = 10
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+
+ACCOUNT_FORMS = {"signup": "sfbot.forms.UserSignupForm"}
+
+ACCOUNT_SESSION_REMEMBER = False
+
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "dashboard"
+
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = "/"
+
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = "/dashboard"
+
+if REGISTER_OFFLINE:
+    ACCOUNT_ADAPTER = "sfbot.adapter.NoNewUsersAccountAdapter"
+
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
