@@ -11,9 +11,9 @@ REGISTER_OFFLINE = False
 
 DEBUG_PROPAGATE_EXCEPTIONS = False
 
-SITE_ID = 1
-
 ALLOWED_HOSTS = []
+
+SITE_ID = 1
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'sfbot',
     'compressor',
 ]
@@ -124,3 +125,22 @@ COMPRESS_PRECOMPILERS = (
 )
 
 COMPRESS_OFFLINE = True
+
+# CELERY STUFF
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_ACCEPT_CONTENT = ["application/json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = TIME_ZONE
+
+CELERY_BEAT_SCHEDULE = {
+    'calculate-every-60-seconds': {
+        'task': 'sfbot.tasks.bot_time',
+        'schedule': 60,
+    },
+    'check-plan-every-5-min': {
+        'task': 'sfbot.tasks.plan_check',
+        'schedule': 300,
+    },
+}
