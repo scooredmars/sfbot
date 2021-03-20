@@ -97,8 +97,8 @@ class PermissionList(models.Model):
         ("5bots no", "5bots no"),
     )
     ICON = (
-        ("Included", "check icon"),
-        ("Not included", "times icon"),
+        ("bi bi-check2", "Included"),
+        ("bi bi-x-square", "Not included"),
     )
     DESCRIPTION = (
         ("Bot works 6h per day", "Bot works 6h per day"),

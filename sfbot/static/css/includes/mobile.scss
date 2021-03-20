@@ -1,0 +1,66 @@
+@media only screen and (max-width: 576px) {
+  .navbar-dp {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .bcg {
+    background-position: center;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  .slogan {
+    margin-left: -2em;
+    margin-top: 4.5em;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 768px) {
+  .slogan {
+    margin-top: 2em;
+    margin-left: -3em;
+
+    .slogan-topic{
+      font-size: 2em !important;
+    }
+
+    .slogan-txt{
+      font-size: 1.1em !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .img-dp {
+    display: none !important;
+  }
+
+  
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+  .benefits {
+    position: absolute;
+    bottom: 120px;
+
+    .benefits-block {
+      padding: 1.3em !important;
+    
+      .topic {
+        font-size: 1.3em !important;
+      }
+    
+      .description {
+        font-size: 1em !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #mobile {
+    background-image: url("/static/img/home/background.png") !important;
+  }
+}

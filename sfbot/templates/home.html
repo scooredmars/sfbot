@@ -1,0 +1,78 @@
+{% extends "layouts/default.html" %}
+
+{% load static %}
+
+{% block title %}SFBot{% endblock %}
+
+{% block content %}
+    <div class="bcg" id="mobile">
+        <section id="home">
+            {% include "layouts/navbar.html" %}
+            <div class="row-fluid d-flex pt-sm-5 pt-md-0 mt-lg-5 pt-lg-5 pt-xl-0 offset-md-1 slogan-object">
+                <div class="col-md-5 d-sm-none d-md-block img-dp">
+                    <img src="{% static 'img/home/bot.png' %}" class="img-fluid">
+                </div>
+                <div class="col-xl-5 col-xxl-4 text-light slogan text-center mt-md-5 pt-md-4 mt-xl-5 pt-xl-3 pt-xxl-4">
+                    <div class="fs-2 slogan-topic">
+                        Improve your character with us
+                    </div>
+                    <p class="fs-5 pt-3 col-9 col-xxl-12 m-auto slogan-txt">FLI Bot is a quick way to lvl your account when you don't
+                    have enought time to play or when you are just sleeping. </p>
+                </div>
+            </div>
+
+            <div class="row-fluid mt-md-5 benefits">
+                <div class="col-12 text-center fs-2 benefits-topic">
+                    Benefits of using FLI
+                </div>
+                <div class="col-sm-9 col-md-12 m-auto d-sm-block d-md-flex justify-content-around text-center mt-md-5">
+                    <div class="col-md-3 benefits-block">
+                        <div class="col-12 fs-2 pb-2"><i class="bi bi-wallet2"></i></div>
+                        <div class="col-12 topic fs-4 pt-1 pb-1">Free Start</div>
+                        <div class="col-12 m-auto description">Basic subscription is 100% free. Application has no hidden covers</div>
+                    </div>
+                    <div class="col-md-3 benefits-block">
+                        <div class="col-12 fs-2 pb-2"><i class="bi bi-shield-lock"></i></div>
+                        <div class="col-12 topic fs-4 pt-1 pb-1">Data Privacy</div>
+                        <div class="col-12 m-auto description">Your data is only used by us for the purpose of the bot function.</div>
+                    </div>
+                    <div class="col-md-3 benefits-block">
+                        <div class="col-12 fs-2 pb-2"><i class="bi bi-sliders"></i></div>
+                        <div class="col-12 topic fs-4 pt-1 pb-1">Simple Settings</div>
+                        <div class="col-12 m-auto description">Interface is designed to be easy to use. Bot can be set with a few clicks.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about">More about FLI</section>
+        <section id="shop">
+            <div class="row-fluid text-center">
+                <div class="col-12 fs-2">Pricing Plan</div>
+                <div class="col-12 fs-5">
+                    Fees are not automatically renewable.
+                </div>
+                <div class="col-12 d-md-flex justify-content-around">
+                    {% for plan in plans %}
+                        <div class="col-3 plan {{ plan.special_style }}">
+                            <div class="col-12 name fs-2 {{ plan.special_style }}">{{ plan.name }}</div>
+                            <div class="col-12 price fs-3 {{ plan.special_style }}">
+                                {% if plan.price == 0 %}
+                                    Free
+                                {% else %}
+                                    $0{{ plan.price }}
+                                {% endif %}
+                            </div>
+                            <div class="col-12 pr-2 list">
+                                {% for permission in plan.permissions.all %}
+                                    <div class="col-12 item-list"><i class="{{ permission.icon }}"></i>{{ permission.description }}</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section id="contact"></section>
+    </div>
+    <script src="{% static 'js/mobile-navbar.js' %}"></script>
+{% endblock %}

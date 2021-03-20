@@ -1,1 +1,27 @@
 @import "includes/home";
+@import "includes/navbar";
+@import "includes/mobile";
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: rgba(110, 110, 110, 0.795);
+}
+
+body {
+    background-color: rgb(88, 87, 87);
+    font-family: Roboto;
+}
+
+.container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
